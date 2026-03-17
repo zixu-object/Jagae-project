@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나전 패브릭 컬렉션 — 신제품 기획안</title>
+<style>
+/* ── reset & base ── */
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',Arial,sans-serif;background:#F7F5F0;color:#1a1a18;font-size:15px;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;}
+
+/* ── layout ── */
+.page-wrap{max-width:900px;margin:0 auto;padding:0 20px 80px;}
+
+/* ── header ── */
+.site-header{background:#1C3B2D;color:#fff;padding:0 20px;}
+.header-inner{max-width:900px;margin:0 auto;padding:40px 0 36px;}
+.brand-tag{font-size:11px;letter-spacing:.12em;color:#9FE1CB;font-weight:500;text-transform:uppercase;margin-bottom:12px;}
+.site-title{font-size:clamp(28px,5vw,42px);font-weight:700;line-height:1.2;margin-bottom:10px;}
+.site-sub{font-size:16px;color:#C8E6D8;margin-bottom:24px;}
+.patent-pills{display:flex;flex-wrap:wrap;gap:8px;}
+.pill{background:rgba(159,225,203,.15);border:1px solid rgba(159,225,203,.4);color:#9FE1CB;font-size:12px;padding:4px 14px;border-radius:20px;}
+
+/* ── nav ── */
+.sticky-nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid rgba(0,0,0,.1);box-shadow:0 1px 6px rgba(0,0,0,.06);}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.nav-inner a{padding:14px 20px;font-size:13px;font-weight:500;color:#5F5E5A;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;}
+.nav-inner a:hover{color:#1C3B2D;}
+.nav-inner a.active{color:#1C3B2D;border-color:#B8882A;}
+
+/* ── section wrappers ── */
+.section{padding:52px 0 12px;}
+.section-badge{display:inline-flex;align-items:center;gap:8px;background:#1C3B2D;color:#fff;font-size:12px;font-weight:600;padding:5px 16px;border-radius:4px;margin-bottom:20px;letter-spacing:.04em;}
+.section-desc{font-size:14px;color:#5F5E5A;margin-bottom:28px;max-width:700px;line-height:1.7;}
+
+/* ── item header ── */
+.item-header{display:flex;align-items:center;gap:12px;margin:32px 0 14px;}
+.item-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.item-title{font-size:20px;font-weight:700;color:#1a1a18;}
+.item-sub{font-size:13px;color:#888780;margin-left:4px;font-weight:400;}
+
+/* ── cards ── */
+.card{background:#fff;border:0.5px solid rgba(0,0,0,.1);border-radius:12px;padding:20px 22px;margin-bottom:12px;}
+.card-title{font-size:13px;font-weight:600;color:#888780;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;}
+
+/* ── two column ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+@media(max-width:640px){.two-col,.three-col{grid-template-columns:1fr;}}
+
+/* ── kv table ── */
+.kv-table{width:100%;border-collapse:collapse;font-size:13px;}
+.kv-table td{padding:9px 10px;border-bottom:0.5px solid rgba(0,0,0,.08);vertical-align:top;}
+.kv-table td:first-child{font-weight:600;width:28%;color:#1a1a18;white-space:nowrap;}
+.kv-table td:last-child{color:#4A4A44;}
+.kv-table tr:nth-child(even) td{background:#F9F8F5;}
+.kv-table tr:last-child td{border-bottom:none;}
+
+/* ── price table ── */
+.price-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;}
+.price-table th{background:#1C3B2D;color:#fff;padding:8px 10px;text-align:left;font-size:11px;font-weight:600;letter-spacing:.04em;}
+.price-table th:nth-child(2),.price-table th:nth-child(3){text-align:center;}
+.price-table td{padding:8px 10px;border-bottom:0.5px solid rgba(0,0,0,.08);font-size:12.5px;}
+.price-table td:nth-child(2){text-align:center;font-weight:500;}
+.price-table td:nth-child(3){text-align:center;color:#888780;}
+.price-table tr:nth-child(even) td{background:#F9F8F5;}
+.price-table tr.highlight td{background:#E8F5F0;font-weight:600;}
+.price-table tr.highlight td:nth-child(2){color:#0F6E56;}
+.price-table tr:last-child td{border-bottom:none;}
+
+/* ── highlight boxes ── */
+.hl{border-radius:0 8px 8px 0;padding:10px 14px;font-size:12.5px;line-height:1.6;margin:10px 0;}
+.hl strong{font-weight:600;}
+.hl-green{background:#E1F5EE;border-left:3px solid #1D9E75;color:#085041;}
+.hl-amber{background:#FAEEDA;border-left:3px solid #EF9F27;color:#633806;}
+.hl-purple{background:#EEEDFE;border-left:3px solid #7F77DD;color:#3C3489;}
+.hl-blue{background:#E6F1FB;border-left:3px solid #378ADD;color:#0C447C;}
+.hl-dark{background:#E8F0EC;border-left:3px solid #1C3B2D;color:#1C3B2D;}
+
+/* ── tags ── */
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
+.tag{font-size:11px;padding:2px 9px;border-radius:10px;}
+.tag-green{background:#E1F5EE;color:#085041;}
+.tag-purple{background:#EEEDFE;color:#3C3489;}
+.tag-amber{background:#FAEEDA;color:#633806;}
+.tag-blue{background:#E6F1FB;color:#0C447C;}
+.tag-red{background:#FCEBEB;color:#791F1F;}
+.tag-gray{background:#F1EFE8;color:#5F5E5A;}
+
+/* ── widget embed (standalone CSS replaces CSS vars) ── */
+.widget-wrap{border:0.5px solid rgba(0,0,0,.1);border-radius:12px;overflow:hidden;margin:16px 0;}
+.widget-wrap .widget-inner{padding:16px;background:#fff;font-size:13px;color:#1a1a18;}
+
+/* ── divider ── */
+.divider{border:none;border-top:1px solid rgba(0,0,0,.08);margin:40px 0;}
+
+/* ── summary table (04) ── */
+.summary-table{width:100%;border-collapse:collapse;font-size:13px;}
+.summary-table th{background:#1C3B2D;color:#fff;padding:10px 12px;text-align:left;font-size:12px;font-weight:600;}
+.summary-table td{padding:10px 12px;border-bottom:0.5px solid rgba(0,0,0,.08);vertical-align:top;}
+.summary-table tr:nth-child(even) td{background:#F9F8F5;}
+.summary-table tr:last-child td{border-bottom:none;}
+.step-badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px;font-weight:600;}
+.step-1{background:#D4EDDA;color:#155724;}
+.step-2{background:#FFF3CD;color:#856404;}
+.step-3{background:#E8F0FB;color:#1A3A8F;}
+
+/* ── step boxes (launch) ── */
+.step-boxes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;}
+@media(max-width:640px){.step-boxes{grid-template-columns:1fr;}}
+.step-box{border-radius:8px;padding:14px 16px;}
+.step-box .step-num{font-size:11px;font-weight:700;margin-bottom:4px;}
+.step-box .step-text{font-size:12px;line-height:1.6;}
+
+/* ── scroll smooth ── */
+html{scroll-behavior:smooth;}
+
+/* ── accordion / sub-tabs ── */
+.sub-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.sub-tab{padding:6px 14px;border-radius:16px;border:0.5px solid rgba(0,0,0,.2);background:#fff;color:#5F5E5A;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;}
+.sub-tab.active,.sub-tab:hover{background:#1C3B2D;color:#fff;border-color:#1C3B2D;}
+.sub-panel{display:none;}
+.sub-panel.active{display:block;}
+
+/* ── widget CSS vars replacement ── */
+:root{
+--color-text-primary:#1a1a18;
+--color-text-secondary:#5F5E5A;
+--color-text-tertiary:#888780;
+--color-background-primary:#ffffff;
+--color-background-secondary:#f5f4f0;
+--color-background-tertiary:#ebebeb;
+--color-border-tertiary:rgba(0,0,0,0.12);
+--color-border-secondary:rgba(0,0,0,0.22);
+--color-border-primary:rgba(0,0,0,0.38);
+--border-radius-md:8px;
+--border-radius-lg:12px;
+--border-radius-xl:16px;
+--color-background-info:#E6F1FB;
+--color-text-info:#0C447C;
+--color-background-success:#E1F5EE;
+--color-text-success:#085041;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand-tag">자개공예 기반 라이프스타일 브랜드 · 신제품 기획안</div>
+    <h1 class="site-title">나전 패브릭 컬렉션</h1>
+    <p class="site-sub">전통의 아름다움 + 스마트한 현대 기술 → 한국적 감성의 라이프스타일</p>
+    <div class="patent-pills">
+      <span class="pill">자개 열전사 특허 — 패브릭 위 실제 자개 조각 부착 (전 세계 유일)</span>
+      <span class="pill">자개 스티커화 기술 — 스티커 부착 + UV 프린트 바니쉬 코팅</span>
+      <span class="pill">주 타겟: 30–40대 여성</span>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <a href="#fabric">01 패브릭</a>
+    <a href="#ink">02 잉크 유리병</a>
+    <a href="#strap">03 워치 스트랩</a>
+    <a href="#summary">04 총정리</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 01 패브릭 -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="fabric">
+  <div class="section-badge">01 패브릭 라인</div>
+  <p class="section-desc">자개 열전사 특허 기술을 적용한 <strong>세계 유일 소재</strong>. 단순 자개 문양 인쇄가 아니라 실제 자개 조각이 직물 위에 부착된 패브릭으로, 브랜드의 가장 강력한 물성적 증거입니다.</p>
+
+  <!-- 생산·가격 탭 위젯 -->
+  <div class="widget-wrap">
+    <div class="widget-inner" id="fabric-widget">
+      <div class="sub-tabs">
+        <button class="sub-tab active" onclick="switchFabric('bandana',this)">반다나</button>
+        <button class="sub-tab" onclick="switchFabric('twilly',this)">트윌리</button>
+        <button class="sub-tab" onclick="switchFabric('sachets',this)">향낭</button>
+      </div>
+
+      <!-- 반다나 -->
+      <div id="fabric-bandana" class="sub-panel active">
+        <div class="item-header"><div class="item-dot" style="background:#1D9E75;"></div><span class="item-title">반다나</span><span class="item-sub">입문 · 체험 · 기념품</span></div>
+        <div class="two-col">
+          <div>
+            <div class="card-title">핵심 컨셉</div>
+            <table class="kv-table">
+              <tr><td>문양 전략</td><td>페이즐리 문양 → 한국 전통 문양(조각보·단청·모란) 치환. 세계적 문법에 한국 콘텐츠 이식</td></tr>
+              <tr><td>체험 연계</td><td>쇼룸 열프레스 체험: 도안 전사지 선택 → 직접 부착. SNS 확산 + 브랜드 경험 심화</td></tr>
+              <tr><td>유통 채널</td><td>국립박물관·국립공원·지역 기념품점. 설악산·제주 등 지역 에디션 시리즈</td></tr>
+              <tr><td>SKU 구성</td><td>기성품 라인(완성 패턴) + 체험 키트(베이스 반다나 + 자개 도안 전사지 3종)</td></tr>
+              <tr><td>포지셔닝</td><td>저가 진입점. 브랜드 생태계의 <strong>입구 역할</strong> — 체험 후 트윌리·잉크병으로 자연 유입</td></tr>
+            </table>
+          </div>
+          <div>
+            <div class="card-title">생산 프로세스</div>
+            <table class="kv-table">
+              <tr><td>①</td><td>베이스 패브릭 선정 (면 60수 이상, 밀도 높을수록 접착 안정성↑)</td></tr>
+              <tr><td>②</td><td>전통문양 도안 제작 (자개 조각 크기 3–8mm에 맞춰 스케일 설계)</td></tr>
+              <tr><td>③</td><td>자개 슬라이싱 0.2–0.3mm + 전사지 배열 고정 <span style="color:#085041;font-size:11px;background:#E1F5EE;padding:1px 6px;border-radius:8px;margin-left:4px;">특허 핵심 공정</span></td></tr>
+              <tr><td>④</td><td>열프레스 전사 (온도·압력·시간 정밀 제어) — 체험용은 쇼룸 소형 열프레스 운영</td></tr>
+              <tr><td>⑤</td><td>에지 헴 처리 + 세탁 내구성 테스트 + 브랜드 밴드 패키징</td></tr>
+            </table>
+            <div class="hl hl-amber" style="margin-top:12px;"><strong>MOQ 고려:</strong> 자개 슬라이싱 단가는 500개 이상 발주 시 급격히 하락. 초기 도안 3–5종 × 200장씩 소량 다품종 전략 권장.</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;">
+          <div class="card-title">가격 설계</div>
+          <table class="price-table">
+            <tr><th>항목</th><th>원가 추정</th><th>비고</th></tr>
+            <tr><td>베이스 패브릭 (55×55cm)</td><td>2,000–3,000원</td><td>면 60수 이상</td></tr>
+            <tr><td>자개 슬라이스·가공</td><td>3,000–6,000원</td><td>밀도에 따라 변동</td></tr>
+            <tr><td>전사지 제작·열프레스</td><td>1,500–3,000원</td><td>공정비 포함</td></tr>
+            <tr><td>패키징</td><td>500–1,000원</td><td>브랜드 밴드</td></tr>
+            <tr class="highlight"><td>총 원가 (추정)</td><td>7,000–13,000원</td><td></td></tr>
+            <tr class="highlight"><td>권장 소비자가</td><td>28,000–45,000원</td><td>마진율 약 70%</td></tr>
+          </table>
+          <div class="hl hl-green" style="margin-top:10px;"><strong>체험 키트 별도 가격:</strong> 베이스 반다나 + 자개 도안 전사지 3종 세트. 체험 포함 25,000–35,000원. 체험 후 구매 전환율이 일반 판매 대비 3–4배 높음.</div>
+        </div>
+      </div>
+
+      <!-- 트윌리 -->
+      <div id="fabric-twilly" class="sub-panel">
+        <div class="item-header"><div class="item-dot" style="background:#7F77DD;"></div><span class="item-title">트윌리</span><span class="item-sub">프리미엄 · 30–40대 여성 플래그십</span></div>
+        <div class="two-col">
+          <div>
+            <div class="card-title">핵심 컨셉</div>
+            <table class="kv-table">
+              <tr><td>소재</td><td>실크 혼방(실크 70% 이상) 또는 고급 새틴 폴리. 드레이프와 광택이 자개와 시각적으로 상호 강화</td></tr>
+              <tr><td>자개 배치</td><td>착용 시 접히는 구간 파악 필수. 양 끝단 10cm + 중앙 포인트 집중. <strong>접힘 구간은 자개-프리존</strong></td></tr>
+              <tr><td>타겟</td><td>30–40대 여성. 에르메스 트윌리 동일 포지션에서 자개 프리미엄으로 차별화</td></tr>
+              <tr><td>론칭 전략</td><td>초기 50–100개 한정 출시 → 희소성 정당화 → 시즌 컬렉션 확장</td></tr>
+            </table>
+          </div>
+          <div>
+            <div class="card-title">생산 프로세스</div>
+            <table class="kv-table">
+              <tr><td>①</td><td>소재 선정: 실크혼방 또는 고급 새틴 폴리 (소재가 럭셔리 포지션 결정)</td></tr>
+              <tr><td>②</td><td>자개 배치 존 설계 — 묶었을 때 접히는 구간 미리 파악, 프리존 확보</td></tr>
+              <tr><td>③</td><td>고밀도 자개 슬라이싱 (2–5mm 소형화, 정밀도↑)</td></tr>
+              <tr><td>④</td><td>정밀 열전사 + 유연성 테스트 (묶기 동작 반복 100회 이상 내구 테스트)</td></tr>
+              <tr><td>⑤</td><td>실크 파우치 또는 리본 박스 + 브랜드 케어 카드(자개 패브릭 관리법) 동봉</td></tr>
+            </table>
+            <div class="hl hl-purple" style="margin-top:12px;"><strong>가격 근거:</strong> 에르메스 트윌리 기준가 9–12만원대. 자개 실물 부착이라는 세계 유일 소재 프리미엄으로 15–18만원 포지셔닝 가능.</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;">
+          <div class="card-title">가격 설계</div>
+          <table class="price-table">
+            <tr><th>항목</th><th>원가 추정</th><th>비고</th></tr>
+            <tr><td>실크혼방 패브릭 (5×120cm)</td><td>6,000–10,000원</td><td>소재가 가격 결정</td></tr>
+            <tr><td>자개 슬라이스·정밀 전사</td><td>8,000–15,000원</td><td>소형 2–5mm 커팅</td></tr>
+            <tr><td>내구 테스트</td><td>1,000–2,000원</td><td>QC 비용</td></tr>
+            <tr><td>프리미엄 패키징</td><td>3,000–6,000원</td><td>실크 파우치 포함</td></tr>
+            <tr class="highlight"><td>총 원가 (추정)</td><td>20,000–37,000원</td><td></td></tr>
+            <tr class="highlight"><td>권장 소비자가</td><td>120,000–180,000원</td><td>마진율 약 78%</td></tr>
+          </table>
+          <div class="hl hl-amber" style="margin-top:10px;"><strong>소량 한정 전략:</strong> 초기 50–100개 한정 출시. 희소성이 프리미엄 정당화. 완판 후 시즌 컬렉션 구조로 확장.</div>
+        </div>
+      </div>
+
+      <!-- 향낭 -->
+      <div id="fabric-sachets" class="sub-panel">
+        <div class="item-header"><div class="item-dot" style="background:#EF9F27;"></div><span class="item-title">향낭</span><span class="item-sub">선물 · 시각+후각 감성</span></div>
+        <div class="two-col">
+          <div>
+            <div class="card-title">핵심 컨셉</div>
+            <table class="kv-table">
+              <tr><td>구조</td><td>외피(자개 부착면) + 내피(향 충전재 접촉면) 분리. 앞판 고정면에 자개 집중 배치</td></tr>
+              <tr><td>스토리</td><td><strong>눈에 보이는 자개의 빛 + 눈에 보이지 않는 향</strong> — 두 감각을 동시에 담은 유일한 아이템</td></tr>
+              <tr><td>향 충전재</td><td>전통 한방향(창포·계피·정향·편백) 또는 현대적 재해석(제주 감귤·솔향). 교체형 구조 권장</td></tr>
+              <tr><td>세트 구성</td><td>향 3종(창포·계피·편백) × 자개 문양 3종 세트 박스. 명절·기념일 선물 최적 가격대</td></tr>
+              <tr><td>재구매 구조</td><td>충전재 교체팩 별도 판매 15,000–20,000원 → 반복 구매 유도</td></tr>
+            </table>
+          </div>
+          <div>
+            <div class="card-title">생산 프로세스</div>
+            <table class="kv-table">
+              <tr><td>①</td><td>외피·내피 패브릭 설계 (고밀도 외피 + 통기성 내피 린넨·면)</td></tr>
+              <tr><td>②</td><td>앞판 고정면에 자개 전사 (접히지 않는 면 → 자개 완성도 극대화)</td></tr>
+              <tr><td>③</td><td>향 충전재 선정 + 교체형 충전재 구조 설계</td></tr>
+              <tr><td>④</td><td>봉제 + 전통 매듭 끈(노리개 방식) 마감</td></tr>
+              <tr><td>⑤</td><td>2–3개 세트 구성 박스 패키징 (트윌리·반다나와 번들 세트 검토)</td></tr>
+            </table>
+            <div class="hl hl-green" style="margin-top:12px;"><strong>3종 세트 구성:</strong> 향 3가지 × 자개 문양 3가지. 소비자가 99,000–150,000원. 명절 선물 최적 가격대.</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;">
+          <div class="card-title">가격 설계</div>
+          <table class="price-table">
+            <tr><th>항목</th><th>원가 추정</th><th>비고</th></tr>
+            <tr><td>외피·내피 패브릭</td><td>1,500–2,500원</td><td>소형 기준</td></tr>
+            <tr><td>자개 슬라이스·전사</td><td>2,000–4,000원</td><td>앞판 집중 배치</td></tr>
+            <tr><td>향 충전재</td><td>1,000–2,000원</td><td>한방향 기준</td></tr>
+            <tr><td>봉제·끈 마감</td><td>1,500–3,000원</td><td>매듭 장식 포함</td></tr>
+            <tr><td>패키징</td><td>1,000–2,000원</td><td>세트 박스</td></tr>
+            <tr class="highlight"><td>총 원가 (추정)</td><td>7,000–13,500원</td><td></td></tr>
+            <tr class="highlight"><td>권장 소비자가 (1개)</td><td>35,000–55,000원</td><td>3종 세트 99,000–150,000원</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 02 잉크 유리병 -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="ink">
+  <div class="section-badge">02 잉크 유리병 패키지</div>
+  <p class="section-desc">전통 문방사우(먹·벼루)에서 형태를 차용한 <strong>직각형 유리병</strong>에 자개 스티커 기술을 적용합니다. 형태가 곧 스토리텔링이 되는 오브제 아이템입니다.</p>
+
+  <div class="hl hl-dark" style="margin-bottom:24px;">
+    <strong>포지셔닝 핵심:</strong> 잉크 소모품이 아닙니다. <strong>자개가 담긴 오브제를 판매하는 것</strong>이고, 잉크는 내용물입니다. 비교 대상은 만년필 잉크 시장이 아니라 책상 위 소장품·선물용 공예 소품 시장입니다. 만년필을 쓰지 않는 30–40대 여성도 라이프스타일 소품·선물용으로 구매하는 타깃이 열립니다.
+  </div>
+
+  <!-- 먹·벼루 폼 언어 위젯 embed -->
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div style="background:#EEEDFE;border-left:2px solid #7F77DD;border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;color:#3C3489;line-height:1.6;margin-bottom:16px;">
+        <strong>먹(墨) + 벼루(硯) 폼 언어 차용</strong> — 직각 형태는 기술적 선택이자 동시에 스토리텔링입니다. 제품 자체가 "현대의 벼루 위에 놓인 먹"을 연상시키는 오브제가 됩니다.
+      </div>
+      <div class="three-col" style="margin-bottom:16px;">
+        <div class="card">
+          <div class="card-title">먹(墨)에서 가져올 것</div>
+          <svg width="100%" viewBox="0 0 160 120" style="display:block;margin-bottom:8px;">
+            <defs><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+            <rect x="45" y="20" width="70" height="40" rx="3" fill="#2C2C2A" opacity="0.85"/>
+            <rect x="53" y="28" width="54" height="24" rx="2" fill="none" stroke="#888780" stroke-width="0.5" stroke-dasharray="3 2"/>
+            <text x="80" y="44" text-anchor="middle" font-size="9" fill="#D3D1C7" font-family="Arial">먹</text>
+            <line x1="115" y1="35" x2="138" y2="25" stroke="#888780" stroke-width="0.5" marker-end="url(#a2)"/>
+            <text x="140" y="23" font-size="9" fill="#888780" font-family="Arial">직사각</text>
+            <line x1="115" y1="45" x2="138" y2="55" stroke="#888780" stroke-width="0.5" marker-end="url(#a2)"/>
+            <text x="140" y="53" font-size="9" fill="#888780" font-family="Arial">측면 문양</text>
+            <line x1="80" y1="60" x2="80" y2="75" stroke="#888780" stroke-width="0.5" marker-end="url(#a2)"/>
+            <rect x="30" y="75" width="100" height="32" rx="4" fill="none" stroke="#7F77DD" stroke-width="1"/>
+            <text x="80" y="87" text-anchor="middle" font-size="9" fill="#7F77DD" font-family="Arial">잉크병 몸통</text>
+            <text x="80" y="100" text-anchor="middle" font-size="8" fill="#7F77DD" font-family="Arial">평면 6면 확보</text>
+          </svg>
+          <p style="font-size:11px;color:#5F5E5A;line-height:1.6;">세장한 직육면체 비율. 손에 쥐는 감각. 측면 넓은 평면이 자개의 주 무대.</p>
+          <div class="tags"><span class="tag tag-purple">직사각 단면</span><span class="tag tag-purple">세장한 비율</span><span class="tag tag-green">평면 6면</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title">벼루(硯)에서 가져올 것</div>
+          <svg width="100%" viewBox="0 0 160 120" style="display:block;margin-bottom:8px;">
+            <defs><marker id="a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+            <rect x="20" y="30" width="120" height="50" rx="5" fill="#444441" opacity="0.7"/>
+            <rect x="30" y="40" width="65" height="30" rx="3" fill="#2C2C2A" opacity="0.8"/>
+            <ellipse cx="115" cy="55" rx="14" ry="10" fill="#5F5E5A" opacity="0.7"/>
+            <line x1="95" y1="38" x2="108" y2="28" stroke="#888780" stroke-width="0.5" marker-end="url(#a3)"/>
+            <text x="109" y="26" font-size="9" fill="#888780" font-family="Arial">낮은 비율</text>
+            <line x1="28" y1="72" x2="18" y2="88" stroke="#888780" stroke-width="0.5" marker-end="url(#a3)"/>
+            <text x="5" y="98" font-size="9" fill="#888780" font-family="Arial">넓은 저면</text>
+            <text x="80" y="100" text-anchor="middle" font-size="9" fill="#888780" font-family="Arial">→ 캡(뚜껑) 비율 참조</text>
+          </svg>
+          <p style="font-size:11px;color:#5F5E5A;line-height:1.6;">납작하고 안정적인 수평감. 벼루의 낮은 비율을 캡 형태에 차용. 병과 캡이 세트로 먹+벼루 연상.</p>
+          <div class="tags"><span class="tag tag-purple">납작한 캡 비율</span><span class="tag tag-amber">묵직한 안정감</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title">병+캡 합체 실루엣</div>
+          <svg width="100%" viewBox="0 0 160 120" style="display:block;margin-bottom:8px;">
+            <rect x="45" y="55" width="70" height="52" rx="2" fill="#444441" opacity="0.15" stroke="#888780" stroke-width="0.5"/>
+            <rect x="45" y="55" width="70" height="52" rx="2" fill="none" stroke="#7F77DD" stroke-width="0.8"/>
+            <rect x="52" y="62" width="20" height="38" rx="1" fill="#7F77DD" opacity="0.25"/>
+            <rect x="52" y="62" width="20" height="38" rx="1" fill="none" stroke="#7F77DD" stroke-width="0.5" stroke-dasharray="2 2"/>
+            <text x="62" y="84" text-anchor="middle" font-size="7" fill="#7F77DD" font-family="Arial">자개</text>
+            <rect x="45" y="38" width="70" height="18" rx="2" fill="#2C2C2A" opacity="0.6"/>
+            <text x="80" y="51" text-anchor="middle" font-size="8" fill="#D3D1C7" font-family="Arial">캡 (벼루 비율)</text>
+            <text x="156" y="36" font-size="8" fill="#888780" font-family="Arial">벼루</text>
+            <text x="156" y="90" font-size="8" fill="#888780" font-family="Arial">먹</text>
+          </svg>
+          <p style="font-size:11px;color:#5F5E5A;line-height:1.6;">캡을 닫으면 하나의 오브제. 캡=벼루, 병=먹 비율. 책상 위에 세워두면 문방구 오브제.</p>
+          <div class="tags"><span class="tag tag-green">오브제 완성형</span><span class="tag tag-green">스토리 내장</span></div>
+        </div>
+      </div>
+
+      <!-- 6면 전략 -->
+      <div style="font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#888780;margin-bottom:8px;">자개 적용 가능한 평면 — 6면 전략</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:16px;">
+        <div style="border:1.5px solid #7F77DD;background:#EEEDFE;border-radius:8px;padding:8px 6px;text-align:center;font-size:11px;color:#3C3489;"><div style="font-weight:600;font-size:10px;margin-bottom:3px;">앞면</div>주 자개 문양<br>대면적 패턴</div>
+        <div style="border:1.5px solid #7F77DD;background:#EEEDFE;border-radius:8px;padding:8px 6px;text-align:center;font-size:11px;color:#3C3489;"><div style="font-weight:600;font-size:10px;margin-bottom:3px;">뒷면</div>브랜드명·색상<br>정보 + 자개 포인트</div>
+        <div style="border:1.5px solid #7F77DD;background:#EEEDFE;border-radius:8px;padding:8px 6px;text-align:center;font-size:11px;color:#3C3489;"><div style="font-weight:600;font-size:10px;margin-bottom:3px;">측면 ×2</div>작은 자개<br>라인 패턴</div>
+        <div style="border:1.5px solid #7F77DD;background:#EEEDFE;border-radius:8px;padding:8px 6px;text-align:center;font-size:11px;color:#3C3489;"><div style="font-weight:600;font-size:10px;margin-bottom:3px;">캡 상면</div>자개 집중<br>정방형 문양</div>
+      </div>
+
+      <div class="hl hl-green"><strong>기술적 해법 완성:</strong> 직각 형태 → 전면 평면 → 현재 UV 코팅 공정 100% 그대로 적용 가능. 신규 공정 개발 없이 기존 플라스틱 작업 방식을 유리에 이전하는 것만으로 제품이 완성됩니다.</div>
+      <div class="hl hl-amber" style="margin-top:8px;"><strong>형태 설계 시 고려점:</strong> 병의 세장한 비율(높이:너비 = 약 2.5:1 ~ 3:1)이 먹의 인상을 가장 잘 살립니다. 너무 정방형에 가까우면 먹보다 지우개처럼 보일 수 있어요. 잉크 용량(30–50ml)을 담으면서 먹의 비율감을 유지하는 내부 용적 설계가 관건입니다.</div>
+    </div>
+  </div>
+
+  <!-- 자개 적용 위치 -->
+  <div class="item-header" style="margin-top:28px;"><div class="item-dot" style="background:#B8882A;"></div><span class="item-title">자개 적용 위치 옵션</span></div>
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="two-col">
+        <div>
+          <div style="margin-bottom:10px;font-size:11px;color:#888780;">옵션 선택 →</div>
+          <div id="zone-a" onclick="switchZone('a')" style="background:#EEEDFE;border:1.5px solid #7F77DD;border-radius:12px;padding:14px;margin-bottom:8px;cursor:pointer;">
+            <div style="font-weight:600;font-size:13px;margin-bottom:4px;">B. 유리병 외면에 <span style="background:#E1F5EE;color:#085041;font-size:10px;padding:2px 7px;border-radius:8px;font-weight:500;margin-left:4px;">스티커 기술 직접 활용</span></div>
+            <div style="font-size:11px;color:#5F5E5A;">자개 스티커를 병 몸통 외면에 부착 + UV 바니쉬 코팅. 이미 플라스틱에 하는 방식 유리 적용</div>
+          </div>
+          <div id="zone-b" onclick="switchZone('b')" style="background:#fff;border:0.5px solid rgba(0,0,0,.12);border-radius:12px;padding:14px;margin-bottom:8px;cursor:pointer;">
+            <div style="font-weight:600;font-size:13px;margin-bottom:4px;">A. 뚜껑(캡)에만 <span style="background:#FAEEDA;color:#633806;font-size:10px;padding:2px 7px;border-radius:8px;font-weight:500;margin-left:4px;">기존 구상안</span></div>
+            <div style="font-size:11px;color:#5F5E5A;">금속·레진 캡 외면에 자개 인레이 또는 스티커 부착 + UV 코팅</div>
+          </div>
+          <div id="zone-c" onclick="switchZone('c')" style="background:#fff;border:0.5px solid rgba(0,0,0,.12);border-radius:12px;padding:14px;margin-bottom:8px;cursor:pointer;">
+            <div style="font-weight:600;font-size:13px;margin-bottom:4px;">C. 캡 + 병 몸통 동시에 <span style="background:#E6F1FB;color:#0C447C;font-size:10px;padding:2px 7px;border-radius:8px;font-weight:500;margin-left:4px;">풀 패키지</span></div>
+            <div style="font-size:11px;color:#5F5E5A;">뚜껑과 병 외면 모두 자개. 가장 완성도 높은 패키지</div>
+          </div>
+          <div id="zone-d" onclick="switchZone('d')" style="background:#fff;border:0.5px solid rgba(0,0,0,.12);border-radius:12px;padding:14px;cursor:pointer;">
+            <div style="font-weight:600;font-size:13px;margin-bottom:4px;">D. 병 안쪽 + 잉크 투영 효과 <span style="background:#FAEEDA;color:#633806;font-size:10px;padding:2px 7px;border-radius:8px;font-weight:500;margin-left:4px;">실험적 · 고난이도</span></div>
+            <div style="font-size:11px;color:#5F5E5A;">투명 유리병 내부에 자개 조각 삽입. 잉크 컬러가 자개 위로 투영되는 시각 효과</div>
+          </div>
+        </div>
+        <div id="zone-detail" style="background:#F9F8F5;border-radius:12px;padding:16px;min-height:280px;">
+          <div id="zone-title" style="font-weight:600;font-size:14px;margin-bottom:12px;">B. 유리병 외면 자개 스티커 적용</div>
+          <div id="zone-body" style="font-size:12px;color:#5F5E5A;line-height:1.7;"><p>플라스틱에 이미 적용 중인 방식 — <strong style="color:#1a1a18;">자개 스티커 부착 → UV 프린트 바니쉬 코팅</strong> — 을 유리병에 그대로 적용하는 방향입니다.</p><p style="margin-top:8px;">유리는 플라스틱보다 표면이 매끄럽고 비다공성이라 스티커 접착력은 오히려 더 안정적일 수 있습니다. 가장 큰 시각적 매력은 <strong style="color:#1a1a18;">유리의 투명성과 자개의 광택이 함께 작동한다는 점</strong>입니다. 안에 든 잉크 컬러(오방색 시리즈라면 청·적·황 등)가 자개 사이로 비쳐 보이는 효과가 생깁니다.</p></div>
+          <div id="zone-procon" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;">
+            <div style="background:#E1F5EE;border-radius:8px;padding:8px 10px;font-size:11px;color:#085041;line-height:1.5;"><div style="font-weight:600;margin-bottom:3px;">장점</div>기존 공정 그대로 적용 가능<br>유리 투명성으로 시각 효과 극대<br>잉크 컬러가 자개 뒤로 투영</div>
+            <div style="background:#FAEEDA;border-radius:8px;padding:8px 10px;font-size:11px;color:#633806;line-height:1.5;"><div style="font-weight:600;margin-bottom:3px;">검토 필요</div>병 곡률 맞춤 스티커 형태 설계<br>UV 코팅 유리 밀착성 테스트<br>라벨과 자개 구역 배치 조율</div>
+          </div>
+          <div id="zone-hl" style="background:#EEEDFE;border-left:2px solid #7F77DD;border-radius:0 8px 8px 0;padding:8px 10px;margin-top:10px;font-size:11px;color:#3C3489;line-height:1.6;">자개 스티커를 병 하단부 또는 허리 구간에 띠처럼 배치하고, 상단은 라벨 공간으로 남기는 구성이 가장 균형적입니다. 잉크 색상별로 자개 문양을 달리하는 시리즈 설계도 가능합니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 소싱 가이드 -->
+  <div class="item-header" style="margin-top:28px;"><div class="item-dot" style="background:#B8882A;"></div><span class="item-title">MVP 소싱 전략</span><span class="item-sub">커스텀 몰딩 전 기성품으로 먼저 검증</span></div>
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="two-col" style="margin-bottom:16px;">
+        <div>
+          <div class="card-title">형태·비율 기준</div>
+          <table class="kv-table">
+            <tr><td><span style="background:#FCEBEB;color:#791F1F;font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">필</span> 단면 형태</td><td>정사각 또는 직사각 단면. 원형·타원형 제외. <strong>4각형 단면만</strong></td></tr>
+            <tr><td><span style="background:#FCEBEB;color:#791F1F;font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">필</span> 높이:너비 비율</td><td>먹 인상을 살리려면 세장한 비율 필수. <strong>2.5:1 ~ 3.5:1</strong></td></tr>
+            <tr><td><span style="background:#FCEBEB;color:#791F1F;font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">필</span> 측면 평면 유효 면적</td><td>자개 스티커 안착 평탄 면적. <strong>앞면 최소 30×50mm</strong></td></tr>
+            <tr><td><span style="background:#E1F5EE;color:#085041;font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">권</span> 용량</td><td>만년필 잉크 표준 참고. <strong>30–50ml</strong></td></tr>
+            <tr><td><span style="background:#E1F5EE;color:#085041;font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">권</span> 유리 두께</td><td>UV 코팅 열처리 시 파손 방지. <strong>2mm 이상</strong></td></tr>
+          </table>
+        </div>
+        <div>
+          <div class="card-title">구조·공정 기준</div>
+          <table class="kv-table">
+            <tr><td><span style="background:#FCEBEB;color:#791F1F;font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">필</span> 입구(구경) 형태</td><td>나사형 캡 호환 — 기밀성·개폐감 모두 좋음</td></tr>
+            <tr><td><span style="background:#FCEBEB;color:#791F1F;font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">필</span> 바닥 안정성</td><td>책상 오브제로 세워두므로 저면이 넓고 안정적이어야 함</td></tr>
+            <tr><td><span style="background:#E1F5EE;color:#085041;font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">권</span> 캡 소재</td><td>금속 캡(알루미늄·황동)이 벼루 질감과 잘 어울림</td></tr>
+            <tr><td><span style="background:#E1F5EE;color:#085041;font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">권</span> 캡 상면 평면</td><td>납작한 캡에 자개 스티커 부착 공간 확보</td></tr>
+            <tr><td><span style="background:#FAEEDA;color:#633806;font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;">선</span> MOQ</td><td>MVP 단계에서 과도한 MOQ는 리스크. <strong>50–200개 우선</strong></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="card-title">소싱 채널 탐색 순서</div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:0.5px solid rgba(0,0,0,.08);">
+          <div style="width:24px;height:24px;border-radius:50%;background:#E1F5EE;color:#085041;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;">1</div>
+          <div><div style="font-weight:600;font-size:12px;color:#1a1a18;">국내 유리병 도매 플랫폼 — 가장 빠른 탐색</div><div style="font-size:11px;color:#5F5E5A;margin-top:2px;">용기나라, 한국포장, 패키징코리아 등. 직각형 향수병·잉크병 카테고리에서 탐색. 샘플 구매 가능.</div><div style="margin-top:4px;"><span class="tag tag-green">샘플 단가 낮음</span><span class="tag tag-green" style="margin-left:4px;">국내 재고 즉시 확인</span></div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:0.5px solid rgba(0,0,0,.08);">
+          <div style="width:24px;height:24px;border-radius:50%;background:#EEEDFE;color:#3C3489;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;">2</div>
+          <div><div style="font-weight:600;font-size:12px;color:#1a1a18;">알리바바 / 1688 — 다품종 탐색</div><div style="font-size:11px;color:#5F5E5A;margin-top:2px;">"square glass bottle 30ml", "rectangular ink bottle" 키워드로 탐색. 국내보다 형태 다양성이 훨씬 넓음. 샘플 배송 1–2주.</div><div style="margin-top:4px;"><span class="tag tag-purple">형태 선택지 가장 넓음</span></div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:0.5px solid rgba(0,0,0,.08);">
+          <div style="width:24px;height:24px;border-radius:50%;background:#E6F1FB;color:#0C447C;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;">3</div>
+          <div><div style="font-weight:600;font-size:12px;color:#1a1a18;">만년필 잉크병 레퍼런스 벤치마킹</div><div style="font-size:11px;color:#5F5E5A;margin-top:2px;">Diamine, Sailor, Pilot Iroshizuku 등 기존 잉크 브랜드 병 형태 분석. 특히 Sailor 직각형 병이 비율 레퍼런스로 유용.</div><div style="margin-top:4px;"><span class="tag tag-blue">비율 기준점 확보</span></div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 0;">
+          <div style="width:24px;height:24px;border-radius:50%;background:#FAEEDA;color:#633806;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;">4</div>
+          <div><div style="font-weight:600;font-size:12px;color:#1a1a18;">국내 유리 제조사 소량 커스텀 — 기성품 없을 때</div><div style="font-size:11px;color:#5F5E5A;margin-top:2px;">경기·충남 지역 유리 제조사 소량 커스텀 탐색. 금형비 포함 초기 비용 300–800만원 수준.</div><div style="margin-top:4px;"><span class="tag tag-red">금형비 초기 투자 필요</span><span class="tag tag-amber" style="margin-left:4px;">리드타임 8–12주</span></div></div>
+        </div>
+      </div>
+      <div class="hl hl-purple" style="margin-top:12px;"><strong>MVP 샘플 제작 타임라인:</strong> 병 탐색·샘플 수령 1–2주 → 자개 스티커 + UV 코팅 테스트 1–2주 → 캡 자개 적용 테스트 1주 → <strong>총 4–6주면 실물 MVP 확인 가능.</strong></div>
+      <div class="hl hl-green" style="margin-top:8px;"><strong>탐색 팁:</strong> 알리바바에서 "square glass bottle with metal cap 30ml"로 검색하면 금속 캡이 달린 직각 유리병이 꽤 나옵니다. 먹의 비율(세장한 형태)에 가장 근접한 것들은 향수 샘플 바이얼 카테고리에 많습니다.</div>
+    </div>
+  </div>
+
+  <!-- 가격 설계 -->
+  <div class="item-header" style="margin-top:20px;"><div class="item-dot" style="background:#B8882A;"></div><span class="item-title">가격 설계 — 3단계 라인 구조</span></div>
+
+  <div class="three-col" style="margin-bottom:12px;">
+    <div class="card" style="border-top:3px solid #1D9E75;">
+      <div class="card-title" style="color:#1D9E75;">MVP 라인</div>
+      <div style="font-size:11px;color:#5F5E5A;margin-bottom:10px;line-height:1.6;">병 외면 자개 + 오방색 1색 잉크. 브랜드 첫 접점. "이 가격에 이 완성도면 당연히 산다"는 반응을 끌어내는 진입가.</div>
+      <div style="font-size:22px;font-weight:700;color:#1D9E75;margin-bottom:4px;">38,000–48,000원</div>
+      <div style="font-size:11px;color:#888780;">원가 7,800–15,700원 · 마진율 약 67–74%</div>
+    </div>
+    <div class="card" style="border-top:3px solid #B8882A;">
+      <div class="card-title" style="color:#B8882A;">시그니처 라인</div>
+      <div style="font-size:11px;color:#5F5E5A;margin-bottom:10px;line-height:1.6;">병 몸통 + 캡 상면 양쪽 자개 적용 풀 패키지. 브랜드 정체성을 가장 완성도 높게 표현하는 플래그십.</div>
+      <div style="font-size:22px;font-weight:700;color:#B8882A;margin-bottom:4px;">65,000–75,000원</div>
+      <div style="font-size:11px;color:#888780;">원가 15,000–25,000원 · 마진율 약 66–77%</div>
+    </div>
+    <div class="card" style="border-top:3px solid #4A3F8F;">
+      <div class="card-title" style="color:#4A3F8F;">오방색 5종 세트</div>
+      <div style="font-size:11px;color:#5F5E5A;margin-bottom:10px;line-height:1.6;">MVP 5색 × 자개 문양 5종 세트 박스. 선물·컬렉터용 최강 구성. 명절·기업 선물 채널 최적.</div>
+      <div style="font-size:22px;font-weight:700;color:#4A3F8F;margin-bottom:4px;">168,000–198,000원</div>
+      <div style="font-size:11px;color:#888780;">원가 45,000–85,000원 · 단품 대비 세트 프리미엄 약 10–15%</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">원가 구성</div>
+    <table class="price-table">
+      <tr><th>항목</th><th>원가 추정</th><th>비고</th></tr>
+      <tr><td>잉크 OEM (30ml)</td><td>2,000–4,000원</td><td>색당 MOQ 200–500병</td></tr>
+      <tr><td>기성 유리병</td><td>800–1,500원</td><td>직각형 30–50ml</td></tr>
+      <tr><td>자개 스티커 + UV 코팅</td><td>3,000–6,000원</td><td>앞면·캡 기준</td></tr>
+      <tr><td>한지 라벨·마감</td><td>500–1,200원</td><td>특수 지류</td></tr>
+      <tr><td>단품 박스</td><td>1,500–3,000원</td><td></td></tr>
+      <tr class="highlight"><td>총 원가 (MVP 단품)</td><td>7,800–15,700원</td><td></td></tr>
+    </table>
+    <div class="hl hl-dark" style="margin-top:10px;"><strong>가격 정당화 근거:</strong> 비교 대상은 만년필 잉크(15,000–50,000원)가 아닌 책상 위 공예 소품·인테리어 오브제 시장입니다. 상품 설명 첫 줄부터 "자개 오브제, 안에 잉크가 들어 있습니다"로 포지셔닝을 명확히 해야 합니다.</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 03 스마트워치 스트랩 -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="strap">
+  <div class="section-badge">03 스마트워치 스트랩</div>
+  <p class="section-desc">현대 기술의 상징인 스마트워치 위에 한국 전통 공예를 구현. 감성과 구조가 다른 <strong>두 가지 버전</strong>을 동시 제안합니다.</p>
+
+  <!-- 시장 가격 조사 (재검토 구간 제외) -->
+  <div class="item-header"><div class="item-dot" style="background:#1C3B2D;"></div><span class="item-title">시장 가격대 조사 결과</span><span class="item-sub">2025 기준</span></div>
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:0.5px solid rgba(0,0,0,.08);">
+          <div style="display:flex;flex-direction:column;gap:4px;width:180px;flex-shrink:0;">
+            <div style="font-size:11px;font-weight:500;color:#5F5E5A;white-space:nowrap;">저가 (실리콘·나일론)</div>
+            <div style="font-size:12px;font-weight:500;color:#888780;">3,000 – 15,000원</div>
+            <div style="height:5px;background:#ebebeb;border-radius:3px;overflow:hidden;"><div style="width:18%;height:100%;background:#B4B2A9;border-radius:3px;"></div></div>
+          </div>
+          <div style="flex:1;font-size:11px;color:#5F5E5A;line-height:1.6;"><strong style="color:#1a1a18;">오픈마켓 중국산 실리콘·나일론 스트랩.</strong> 다나와·쿠팡 기준 가장 많은 물량. 자개 스트랩과 비교군 아님.</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:0.5px solid rgba(0,0,0,.08);">
+          <div style="display:flex;flex-direction:column;gap:4px;width:180px;flex-shrink:0;">
+            <div style="font-size:11px;font-weight:500;color:#5F5E5A;white-space:nowrap;">일반 가죽 (스마트스토어)</div>
+            <div style="font-size:12px;font-weight:500;color:#888780;">15,000 – 40,000원</div>
+            <div style="height:5px;background:#ebebeb;border-radius:3px;overflow:hidden;"><div style="width:35%;height:100%;background:#B4B2A9;border-radius:3px;"></div></div>
+          </div>
+          <div style="flex:1;font-size:11px;color:#5F5E5A;line-height:1.6;"><strong style="color:#1a1a18;">스누브, 아이디어스 일반 가죽 등.</strong> 스마트스토어 가죽 스트랩 주류. 17,900–26,900원이 볼륨 존. <span style="background:#F1EFE8;color:#5F5E5A;font-size:10px;padding:1px 6px;border-radius:8px;">스누브 D버클 가죽 18,900원</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:0.5px solid rgba(0,0,0,.08);">
+          <div style="display:flex;flex-direction:column;gap:4px;width:180px;flex-shrink:0;">
+            <div style="font-size:11px;font-weight:500;color:#5F5E5A;white-space:nowrap;">프리미엄 가죽 (전문 브랜드)</div>
+            <div style="font-size:12px;font-weight:500;color:#7F77DD;">45,000 – 90,000원</div>
+            <div style="height:5px;background:#ebebeb;border-radius:3px;overflow:hidden;"><div style="width:62%;height:100%;background:#7F77DD;border-radius:3px;"></div></div>
+          </div>
+          <div style="flex:1;font-size:11px;color:#5F5E5A;line-height:1.6;"><strong style="color:#1a1a18;">타임플릭 이탈리아 소가죽, 알피나 솔트레지 등.</strong> 국내 프리미엄 브랜드 주력 가격대. <span style="background:#EEEDFE;color:#3C3489;font-size:10px;padding:1px 6px;border-radius:8px;">삼성 정품 스포츠밴드 59,400원</span><span style="background:#EEEDFE;color:#3C3489;font-size:10px;padding:1px 6px;border-radius:8px;margin-left:4px;">식물성 태닝 가죽 49,500원</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0;">
+          <div style="display:flex;flex-direction:column;gap:4px;width:180px;flex-shrink:0;">
+            <div style="font-size:11px;font-weight:500;color:#5F5E5A;white-space:nowrap;">하이엔드 (국내 최상위)</div>
+            <div style="font-size:12px;font-weight:500;color:#1D9E75;">90,000 – 130,000원</div>
+            <div style="height:5px;background:#ebebeb;border-radius:3px;overflow:hidden;"><div style="width:80%;height:100%;background:#1D9E75;border-radius:3px;"></div></div>
+          </div>
+          <div style="flex:1;font-size:11px;color:#5F5E5A;line-height:1.6;"><strong style="color:#1a1a18;">아더(a.ther) 앱송 가죽 119,000원.</strong> 삼성 갤럭시워치 울트라 정품 스트랩 99,000–102,100원. 국내에서 현재 유통 중인 사실상 최상위 가격대. <span style="background:#E1F5EE;color:#085041;font-size:10px;padding:1px 6px;border-radius:8px;">아더(a.ther) 앱송 119,000원</span></div>
+        </div>
+      </div>
+      <div class="hl hl-amber" style="margin-top:8px;"><strong>핵심 인사이트:</strong> 국내 스마트워치 스트랩 시장은 10만원대 초반이 소비자 심리적 상한선. 가죽이 아닌 TPU·나일론·플레이트 구조로 원가를 설계하면 <strong>3–6만원대에서 마진율 70% 이상 확보 가능.</strong></div>
+    </div>
+  </div>
+
+  <!-- 플레이트 vs 버클 -->
+  <div class="item-header" style="margin-top:28px;"><div class="item-dot" style="background:#1C3B2D;"></div><span class="item-title">플레이트(장식 오버레이) vs 버클</span></div>
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <p style="font-size:11px;color:#888780;margin-bottom:12px;">스마트워치 스트랩의 각 부위 명칭과 자개 플레이트의 위치</p>
+      <svg width="100%" viewBox="0 0 680 320" style="max-width:600px;display:block;margin:0 auto 16px;">
+        <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="270" y="100" width="140" height="120" rx="22" fill="#2C2C2A" opacity="0.85"/>
+        <rect x="282" y="112" width="116" height="96" rx="16" fill="#1a1a18"/>
+        <text x="340" y="158" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#888780" font-family="Arial">watch</text>
+        <text x="340" y="173" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#888780" font-family="Arial">face</text>
+        <rect x="262" y="118" width="14" height="84" rx="3" fill="#444441"/>
+        <rect x="404" y="118" width="14" height="84" rx="3" fill="#444441"/>
+        <rect x="270" y="30" width="140" height="72" rx="8" fill="#5F5E5A" opacity="0.6"/>
+        <rect x="270" y="30" width="140" height="72" rx="8" fill="none" stroke="#888780" stroke-width="0.5"/>
+        <circle cx="295" cy="100" r="4" fill="#2C2C2A"/>
+        <circle cx="385" cy="100" r="4" fill="#2C2C2A"/>
+        <rect x="270" y="218" width="140" height="72" rx="8" fill="#5F5E5A" opacity="0.6"/>
+        <rect x="270" y="218" width="140" height="72" rx="8" fill="none" stroke="#888780" stroke-width="0.5"/>
+        <rect x="306" y="292" width="68" height="20" rx="4" fill="#888780" opacity="0.9"/>
+        <text font-size="9" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central" x="340" y="302" font-family="Arial" font-weight="500">BUCKLE</text>
+        <rect x="278" y="36" width="124" height="58" rx="6" fill="#1D9E75" opacity="0.18"/>
+        <rect x="278" y="36" width="124" height="58" rx="6" fill="none" stroke="#1D9E75" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <ellipse cx="316" cy="65" rx="14" ry="8" fill="#9FE1CB" opacity="0.6"/>
+        <ellipse cx="340" cy="55" rx="10" ry="6" fill="#5DCAA5" opacity="0.5"/>
+        <ellipse cx="364" cy="65" rx="13" ry="7" fill="#9FE1CB" opacity="0.55"/>
+        <ellipse cx="340" cy="75" rx="11" ry="5" fill="#5DCAA5" opacity="0.45"/>
+        <line x1="278" y1="50" x2="220" y2="35" stroke="#1D9E75" stroke-width="0.8" stroke-dasharray="3 2" marker-end="url(#arr)"/>
+        <text font-size="11" fill="#085041" x="60" y="26" font-family="Arial" font-weight="500">자개 플레이트</text>
+        <text font-size="10" fill="#0F6E56" x="60" y="39" font-family="Arial">(장식용 오버레이)</text>
+        <line x1="410" y1="250" x2="470" y2="250" stroke="#888780" stroke-width="0.8" marker-end="url(#arr)"/>
+        <text font-size="10" fill="#888780" x="474" y="254" font-family="Arial">스트랩 본체</text>
+        <text font-size="10" fill="#888780" x="474" y="267" font-family="Arial">(실리콘·나일론 등)</text>
+        <line x1="374" y1="302" x2="470" y2="302" stroke="#888780" stroke-width="0.8" marker-end="url(#arr)"/>
+        <text font-size="10" fill="#888780" x="474" y="306" font-family="Arial">버클</text>
+        <text font-size="10" fill="#888780" x="474" y="319" font-family="Arial">(개폐·고정 장치)</text>
+        <line x1="262" y1="130" x2="200" y2="115" stroke="#888780" stroke-width="0.8" marker-end="url(#arr)"/>
+        <text font-size="10" fill="#888780" x="120" y="112" font-family="Arial">러그</text>
+        <text font-size="10" fill="#888780" x="100" y="125" font-family="Arial">(워치-스트랩 연결)</text>
+      </svg>
+      <div class="two-col">
+        <div style="border:1.5px solid #1D9E75;border-radius:12px;padding:14px;">
+          <div style="font-weight:600;font-size:13px;color:#1D9E75;margin-bottom:8px;">자개 플레이트 (장식 오버레이)</div>
+          <p style="font-size:11px;color:#5F5E5A;line-height:1.6;">스트랩 위에 <strong>올려놓거나 끼워지는 장식 조각</strong>입니다. 버클과는 완전히 별개예요. 짧은 스트랩(위쪽) 바깥 면에 슬라이드 방식으로 끼우거나, 자석으로 부착하는 구조입니다. 완전한 평면이라 자개 스티커 + UV 코팅을 그대로 적용할 수 있고, 착용했을 때 손목 바깥으로 자개가 보이도록 위치합니다.</p>
+          <div class="tags"><span class="tag tag-green">평면 확보</span><span class="tag tag-green">현재 공정 그대로</span><span class="tag tag-purple">탈부착 가능</span></div>
+        </div>
+        <div style="border:0.5px solid rgba(0,0,0,.12);border-radius:12px;padding:14px;">
+          <div style="font-weight:600;font-size:13px;color:#888780;margin-bottom:8px;">버클 (개폐·고정 장치)</div>
+          <p style="font-size:11px;color:#5F5E5A;line-height:1.6;">스트랩 끝에 달려서 손목을 감아 고정하는 금속 장치입니다. 핀버클, 나비버클, 마그네틱 버클 등 여러 종류. 버클에도 자개를 넣을 수 있지만, 금속 위 자개 스티커는 공정이 달라지고 면적이 작아 시각 효과가 제한적입니다.</p>
+          <div class="tags"><span class="tag tag-gray">금속 소재</span><span class="tag tag-amber">자개 면적 작음</span></div>
+        </div>
+      </div>
+      <div class="hl hl-green" style="margin-top:12px;"><strong>핵심 차이:</strong> 버클은 기능 부품(여닫는 역할), 플레이트는 순수 장식 부품입니다. 또는 가장 단순한 방법으로 <strong>스트랩 바깥 면에 바로 자개 스티커를 붙이고 UV 코팅</strong>하는 것도 가능 — 이미 하고 계신 플라스틱 공정과 완전히 동일합니다.</div>
+    </div>
+  </div>
+
+  <!-- Version A & B -->
+  <div class="item-header" style="margin-top:28px;"><div class="item-dot" style="background:#1C3B2D;"></div><span class="item-title">두 버전 비교</span></div>
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="two-col">
+        <!-- Version A -->
+        <div>
+          <div style="background:#E8F0FB;border-radius:8px;padding:8px 12px;margin-bottom:12px;">
+            <div style="font-weight:700;font-size:14px;color:#1C3B2D;">Version A</div>
+            <div style="font-size:12px;color:#5F5E5A;">스트랩 직접 부착형</div>
+          </div>
+          <table class="kv-table">
+            <tr><td>베이스 소재</td><td>TPU(열가소성 폴리우레탄) 우선 권장 — 플라스틱과 소재 특성 유사, 공정 이전 수월</td></tr>
+            <tr><td>자개 배치</td><td>위쪽 스트랩 바깥 면. 손목 굴곡 구간(12시 방향) 자개 배제. 러그 부근 포인트 집중</td></tr>
+            <tr><td>공정</td><td>자개 스티커 부착 → UV 바니쉬 코팅 (현재 공정 그대로)</td></tr>
+            <tr><td>감성</td><td>일체형 깔끔함. 스트랩 전체가 하나의 작품처럼 보이는 연속성</td></tr>
+            <tr><td>선행 과제</td><td>TPU 자개 접착력·굴곡 내구성 테스트 (반복 착탈 100회 이상)</td></tr>
+          </table>
+          <div style="margin-top:12px;">
+            <table class="price-table">
+              <tr><th>항목</th><th>원가</th><th>비고</th></tr>
+              <tr><td>TPU 스트랩 OEM</td><td>3,000–6,000원</td><td>22mm 범용</td></tr>
+              <tr><td>자개 스티커 + UV</td><td>2,500–6,000원</td><td>포인트 집중</td></tr>
+              <tr><td>패키징</td><td>500–1,000원</td><td></td></tr>
+              <tr class="highlight"><td>총 원가</td><td>6,000–13,000원</td><td></td></tr>
+              <tr class="highlight"><td>소비자가</td><td>30,000–50,000원</td><td>마진 약 72%</td></tr>
+            </table>
+          </div>
+        </div>
+        <!-- Version B -->
+        <div>
+          <div style="background:#F0EBF8;border-radius:8px;padding:8px 12px;margin-bottom:12px;">
+            <div style="font-weight:700;font-size:14px;color:#4A3F8F;">Version B</div>
+            <div style="font-size:12px;color:#5F5E5A;">자개 플레이트 탈부착형</div>
+          </div>
+          <table class="kv-table">
+            <tr><td>플레이트 구조</td><td>레진·알루미늄 직사각형 플레이트(약 30×15mm). 슬라이드·클립 방식 탈부착. 완전 평면</td></tr>
+            <tr><td>자개 적용</td><td>완전 평면 → 자개 스티커 + UV 바니쉬 (기존 공정 100% 동일)</td></tr>
+            <tr><td>베이스 스트랩</td><td>기성 실리콘·나일론 소싱. 소재 무관 범용 호환</td></tr>
+            <tr><td>감성</td><td>액세서리 교체하는 경험. 계절·기분에 따라 자개 문양 바꾸는 커스터마이징</td></tr>
+            <tr><td>추가 수익</td><td>플레이트 단품 18,000–28,000원 별도 판매 → 문양 시리즈 교체 재구매</td></tr>
+          </table>
+          <div style="margin-top:12px;">
+            <table class="price-table">
+              <tr><th>항목</th><th>원가</th><th>비고</th></tr>
+              <tr><td>플레이트 + 자개 + UV</td><td>4,500–9,000원</td><td>평면 공정</td></tr>
+              <tr><td>기성 실리콘 스트랩</td><td>2,000–4,000원</td><td>소싱</td></tr>
+              <tr><td>패키징</td><td>500–1,000원</td><td></td></tr>
+              <tr class="highlight"><td>세트 총 원가</td><td>7,000–14,000원</td><td></td></tr>
+              <tr class="highlight"><td>세트 소비자가</td><td>35,000–55,000원</td><td>마진 약 73%</td></tr>
+            </table>
+          </div>
+          <div class="hl hl-purple" style="margin-top:10px;">플레이트 단품 18,000–28,000원 별도 SKU → 스트랩 보유자가 문양만 교체 구매 가능</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 04 총정리 -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="summary">
+  <div class="section-badge">04 아이템별 역할·채널·가격대 총정리</div>
+
+  <div class="card" style="overflow-x:auto;">
+    <table class="summary-table" style="min-width:500px;">
+      <tr>
+        <th>아이템</th>
+        <th>가격대</th>
+        <th>브랜드 내 역할</th>
+        <th>핵심 채널</th>
+      </tr>
+      <tr>
+        <td><strong>반다나</strong></td>
+        <td>28,000–45,000원</td>
+        <td>입구·체험·기념품 깔때기</td>
+        <td>쇼룸·박물관·지역 기념품</td>
+      </tr>
+      <tr>
+        <td><strong>향낭</strong></td>
+        <td>35,000–55,000원</td>
+        <td>선물·감각 확장 보조</td>
+        <td>온라인·편집숍·명절</td>
+      </tr>
+      <tr>
+        <td><strong>워치 스트랩 A·B</strong></td>
+        <td>30,000–55,000원</td>
+        <td>일상 노출·테크 접점</td>
+        <td>온라인·패션 편집숍</td>
+      </tr>
+      <tr>
+        <td><strong>잉크 유리병 MVP</strong></td>
+        <td>38,000–48,000원</td>
+        <td>자개 오브제 소품·선물</td>
+        <td>라이프스타일 숍·온라인</td>
+      </tr>
+      <tr>
+        <td><strong>잉크 유리병 시그니처</strong></td>
+        <td>65,000–75,000원</td>
+        <td>공예 오브제 플래그십</td>
+        <td>쇼룸·편집숍</td>
+      </tr>
+      <tr>
+        <td><strong>잉크 오방색 세트</strong></td>
+        <td>168,000–198,000원</td>
+        <td>컬렉터·선물 최상위</td>
+        <td>쇼룸·명절 선물 채널</td>
+      </tr>
+      <tr>
+        <td><strong>트윌리</strong></td>
+        <td>120,000–180,000원</td>
+        <td>플래그십·브랜드 완성도</td>
+        <td>쇼룸·럭셔리 편집숍</td>
+      </tr>
+    </table>
+  </div>
+
+</section>
+
+<div style="text-align:center;padding:40px 0 20px;font-size:12px;color:#888780;">팀 내부 공유용 · 자개공예 기반 라이프스타일 브랜드 · 신제품 기획안</div>
+
+</div><!-- end page-wrap -->
+
+<script>
+// fabric sub-tabs
+function switchFabric(id, el) {
+  document.querySelectorAll('#fabric-widget .sub-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('#fabric-widget .sub-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('fabric-'+id).classList.add('active');
+}
+
+// zone switcher
+const zoneData = {
+  a: {
+    title:'B. 유리병 외면 자개 스티커 적용',
+    body:'<p>플라스틱에 이미 적용 중인 방식 — <strong>자개 스티커 부착 → UV 프린트 바니쉬 코팅</strong> — 을 유리병에 그대로 적용하는 방향입니다.</p><p style="margin-top:8px;">유리는 플라스틱보다 표면이 매끄럽고 비다공성이라 스티커 접착력은 오히려 더 안정적일 수 있습니다. 가장 큰 시각적 매력은 <strong>유리의 투명성과 자개의 광택이 함께 작동한다는 점</strong>입니다.</p>',
+    pro:'기존 공정 그대로 적용 가능<br>유리 투명성으로 시각 효과 극대<br>잉크 컬러가 자개 뒤로 투영',
+    con:'병 곡률 맞춤 스티커 형태 설계<br>UV 코팅 유리 밀착성 테스트<br>라벨과 자개 구역 배치 조율',
+    hl:'자개 스티커를 병 하단부 또는 허리 구간에 띠처럼 배치하고, 상단은 라벨 공간으로 남기는 구성이 가장 균형적입니다. 잉크 색상별로 자개 문양을 달리하는 시리즈 설계도 가능합니다.',
+    hlStyle:'background:#EEEDFE;border-left:2px solid #7F77DD;color:#3C3489;'
+  },
+  b: {
+    title:'A. 뚜껑(캡)에만 자개 적용',
+    body:'<p>금속(황동·알루미늄) 또는 레진 소재 캡의 외면에 자개 스티커를 부착하고 UV 바니쉬로 코팅하는 방식입니다.</p><p style="margin-top:8px;">캡이 제품을 열고 닫을 때마다 눈에 띄는 구조라서 <strong>첫인상 임팩트</strong>는 크지만, 자개 면적이 작아 전체적인 존재감은 제한적입니다.</p>',
+    pro:'공정 단순·검증된 방식<br>캡만 교체 시 업그레이드 가능<br>초기 MVP로 적합',
+    con:'자개 노출 면적 작음<br>병 자체는 일반 유리로 보임<br>브랜드 임팩트 제한적',
+    hl:'캡에만 자개를 넣을 경우, 병 몸통 라벨 디자인의 완성도가 전체 인상을 좌우합니다. 자개 캡과 어울리는 한지 라벨 디자인이 보완재가 됩니다.',
+    hlStyle:'background:#FAEEDA;border-left:2px solid #EF9F27;color:#633806;'
+  },
+  c: {
+    title:'C. 캡 + 병 몸통 동시 적용 (풀 패키지)',
+    body:'<p>뚜껑과 병 외면 모두에 자개를 적용하는 가장 완성도 높은 구성입니다.</p><p style="margin-top:8px;"><strong>캡의 자개</strong>는 개봉 순간의 시각 임팩트를, <strong>병 몸통의 자개</strong>는 진열·보관 시의 오브제 감성을 담당합니다. 이 구성이 완성되면 잉크병이 단순한 소모품이 아니라 <strong>책상 위에 두고 싶은 오브제</strong>로 자리잡게 됩니다.</p>',
+    pro:'가장 강력한 브랜드 임팩트<br>오브제·컬렉터 포지셔닝<br>SNS 촬영 욕구 극대화',
+    con:'공정 단계 2배·원가 상승<br>캡·병 자개 패턴 정합성 설계 필요<br>프리미엄 가격 정당화 필요',
+    hl:'5색 세트 박스 구성으로 묶을 때 효과 극대. 플래그십 에디션 또는 세트 구성의 최상위 라인으로 포지셔닝하면 원가 상승을 가격에 자연스럽게 반영할 수 있습니다.',
+    hlStyle:'background:#E6F1FB;border-left:2px solid #378ADD;color:#0C447C;'
+  },
+  d: {
+    title:'D. 병 내부 자개 삽입 — 잉크 투영 효과',
+    body:'<p>가장 실험적인 방향입니다. 투명 유리병 <strong>내부</strong>에 자개 조각을 넣거나, 병 내벽에 자개를 고정하는 구조입니다.</p><p style="margin-top:8px;">잉크를 채우면 자개 위로 색이 투영되면서 플라스틱이나 외부 부착으로는 절대 만들 수 없는 <strong>독보적 시각 효과</strong>가 생깁니다. 단, 자개가 잉크에 장시간 노출될 때 변색·박리 여부 등 현실적 난관이 있습니다.</p>',
+    pro:'세계 어디에도 없는 시각 경험<br>빈 병 자체가 오브제<br>브랜드 화제성 폭발적',
+    con:'자개·잉크 화학적 내성 미검증<br>내벽 고정 공정 신규 개발 필요<br>단가·개발 기간 예측 어려움',
+    hl:'단기 구현보다는 R&D 아이템으로 분류. 우선 "빈 병 + 자개 내부 삽입" 형태의 디스플레이 오브제 버전으로 먼저 테스트해보는 것을 권장합니다. 쇼룸 전시용으로도 강력한 어텐션 아이템이 됩니다.',
+    hlStyle:'background:#FAEEDA;border-left:2px solid #EF9F27;color:#633806;'
+  }
+};
+function switchZone(key) {
+  ['a','b','c','d'].forEach(k=>{
+    const el = document.getElementById('zone-'+k);
+    if(el) { el.style.background = k===key ? '#EEEDFE' : '#fff'; el.style.border = k===key ? '1.5px solid #7F77DD' : '0.5px solid rgba(0,0,0,.12)'; }
+  });
+  const d = zoneData[key];
+  document.getElementById('zone-title').textContent = d.title;
+  document.getElementById('zone-body').innerHTML = d.body;
+  document.getElementById('zone-procon').innerHTML = `<div style="background:#E1F5EE;border-radius:8px;padding:8px 10px;font-size:11px;color:#085041;line-height:1.5;"><div style="font-weight:600;margin-bottom:3px;">장점</div>${d.pro}</div><div style="background:#FAEEDA;border-radius:8px;padding:8px 10px;font-size:11px;color:#633806;line-height:1.5;"><div style="font-weight:600;margin-bottom:3px;">검토 필요</div>${d.con}</div>`;
+  document.getElementById('zone-hl').setAttribute('style', d.hlStyle + 'border-radius:0 8px 8px 0;padding:8px 10px;margin-top:10px;font-size:11px;line-height:1.6;');
+  document.getElementById('zone-hl').textContent = d.hl;
+}
+
+// nav active highlight on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-inner a');
+window.addEventListener('scroll', ()=>{
+  let cur = '';
+  sections.forEach(s=>{ if(window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  navLinks.forEach(a=>{ a.classList.toggle('active', a.getAttribute('href')==='#'+cur); });
+});
+</script>
+</body>
+</html>
